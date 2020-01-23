@@ -9,7 +9,7 @@ use App\Repositories\ItemRepository;
 
 class ItemController extends Controller
 {
-    //*************** THIS GOOD ********************/
+    //*************** THIS IS GOOD ********************/
 
     public $itemRepository;
 
