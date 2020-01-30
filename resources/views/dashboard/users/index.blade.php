@@ -5,11 +5,11 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="{{route('admin')}}">الصفحة الرئيسية</a>
+            <a href="{{route('dashboard.index')}}">الصفحة الرئيسية</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{route('admins.index')}}">الأدمن</a>
+            <a href="{{route('users.index')}}">الأدمن</a>
             <i class="fa fa-circle"></i>
         </li>
     </ul>
@@ -57,9 +57,9 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>
-                            <form action="{{route('admins.destroy', $user->id)}}" method="POST">
+                            <form action="{{route('users.destroy', $user->id)}}" method="POST">
                                 @csrf {{ method_field('DELETE') }}
-                                <a href="{{route('admins.edit', $user->id)}}"
+                                <a href="{{route('users.edit', $user->id)}}"
                                     class="btn dark btn-sm btn-outline sbold uppercase">
                                     <i class="fa fa-edit"> تعديل </i>
                                 </a>
@@ -87,7 +87,7 @@
                 <h4 class="modal-title">أضافة مشروع</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admins.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>الأسم</label>

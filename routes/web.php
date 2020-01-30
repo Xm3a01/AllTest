@@ -10,26 +10,31 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function(){
 
-    Route::get('/','AdminController@index')->name('dashboard.index');
-    Route::get('/users','AdminController@index')->name('admin.index');
-    Route::resource('/products','ItemController');
+    Route::get('/','dashboard\AdminController@firstPage')->name('dashboard.index');
+    Route::resource('users','dashboard\AdminController');
+    Route::resource('/products','dashboard\ItemController');
+    Route::resource('/categories','dashboard\CategoryController');
+    Route::resource('/subcategories','dashboard\Sub_CategoryController');
+
 });
 
+Route::get('/','Website\IndexController@index')->name('index');
 
-Route::post('/test','AdminController@comper');
 
-Route::get('/te', function () {
-    return view('test');
-});
+
+
+
+
+
+
+
+
+
+
+
+//Localization Lang Setting
+Route::get('locale/{locale}', 'LocaleController@index');

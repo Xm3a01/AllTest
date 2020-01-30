@@ -18,5 +18,15 @@ class AdminRepository {
         return  Item::all();
     }
 
+    public function getAdminById($id)
+    {
+        return User::findOrFail($id);
+    }
+
+    public function create($request)
+    {
+        return $request;
+    }
+
 
 }

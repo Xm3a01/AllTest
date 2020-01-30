@@ -55,6 +55,7 @@
                         <th>الوصف</th>
                         <th>التلفون الاول</th>
                         <th>التلفون الاول</th>
+                        <th>حالة المنتج</th>
                         <th>العمليات</th>
                     </tr>
                 </thead>
@@ -63,11 +64,13 @@
                     @foreach($items as $item)
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td>{{$item->item_name}}</td>
-                        <td>{{$item->price}}</td>
-                        <td>{!! Str::limit(strip_tags($item->description) ,  $limit = 30, $end ='...')!!}</td>
+                        <td>{{$item->ar_item_name}}</td>
+                        <td>{{number_format($item->price, '2', '.', '')}}</td>
+                        <td>{!! Str::limit(strip_tags($item->ar_description) ,  $limit = 20)!!}</td>
                         <td>{{$item->phone1}}</td>
                         <td>{{$item->phone2}}</td>
+                        <td>
+                          {!! $item->available ? '<span class="dot"></span>' : '<span class="readDot"></span>'!!}
                         <td>
                             <form action="{{route('products.destroy', $item->id)}}" method="POST">
                                 @csrf {{ method_field('DELETE') }}
@@ -88,6 +91,10 @@
             </table>
         </div>
         <!-- END TABLE -->
+        <div class="row">
+            <div class="col-md-2"><span class="dot"></span> | متاح </div>
+            <div class="col-md-2"><span class="readDot"></span> | غير متاح</div>
+        </div>
     </div>
 </div>
 <!-- END DATATABLE -->
@@ -104,24 +111,32 @@
                     @csrf
                     <div class="form-group">
                         <label>الأسم</label>
-                        <input type="text" name="item_name" class="form-control" placeholder="الأسم" required>
+                        <input type="text" name="ar_item_name" class="form-control" placeholder=" الاسم باللغه العربيه" required>
 
                         <label>Name</label>
-                        <input type="text" name="ar_item_name" class="form-control" placeholder="name" required>
+                        <input type="text" name="item_name" class="form-control" placeholder="Eng-Name" required>
 
                         <label>السعر</label>
-                        <input type="text" name="price" class="form-control" placeholder="Name" required>
+                        <input type="text" name="price" class="form-control" placeholder="السعر" required>
                         
                         <label>التلفون الاول</label>
-                        <input type="text" name="phone1" class="form-control" placeholder="Name" required>
+                        <input type="text" name="phone1" class="form-control" placeholder="التلفون الاول" required>
                         
                         <label>التلفون الثاني</label>
-                        <input type="text" name="phone2" class="form-control" placeholder="Name" required>
+                        <input type="text" name="phone2" class="form-control" placeholder="التلفون الثاني" required>
                         
-                        <label>الوصف</label>
+                        <label for="">اختار التصنيف</label>
+                        <select class="form-control" name="sub_category_id" id="category_id">
+                            <option selected hidden  value="" selected>التصنيف</option>
+                            @foreach ($subcategories as $subcategory)     
+                              <option value="{{$subcategory->id}}">{{$subcategory->ar_name}}</option>
+                            @endforeach
+                        </select>
+                        
+                        <label for="ar_description"> الوصف باللغه العربيه</label>
                         <textarea name="ar_description" class="form-control ck_editor"></textarea>
 
-                        <label>Description</label>
+                        <label for="description">Description Eng</label>
                         <textarea name="description" class="form-control ck_editor"></textarea>
 
                         <label>صورة</label>

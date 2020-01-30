@@ -1,5 +1,5 @@
 @extends('dashboard.metronic')
-@section('title', ' جدول المشاريع')
+@section('title', ' جدول التصنفات')
 <!-- BEGIN CSS -->
 @section('stylesheets')
 <link rel="stylesheet" href="{{ asset('vendor/plugins/datatables/datatables.min.css') }}">
@@ -11,11 +11,11 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="{{route('admin')}}">الصفحة الرئيسية</a>
+            <a href="{{route('dashboard.index')}}">الصفحة الرئيسية</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{route('projects.index')}}">المشاريع</a>
+            <a href="{{route('categories.index')}}">التصنيفات</a>
             <i class="fa fa-circle"></i>
         </li>
     </ul>
@@ -29,7 +29,7 @@
     <div class="portlet-title">
         <div class="caption">
             <i class="icon-social-dribbble font-green"></i>
-            <span class="caption-subject font-green bold uppercase">جدول المشاريع</span>
+            <span class="caption-subject font-green bold uppercase">جدول التصنيفات</span>
         </div>
     </div>
     <div class="portlet-body">
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group">
-                        <button data-toggle="modal" class="btn sbold green" href="#add_project"> أضافة مشروع
+                        <button data-toggle="modal" class="btn sbold green" href="#add_category"> أضافة تصنيف
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
@@ -50,20 +50,20 @@
                 <thead>
                     <tr>
                         <th> # </th>
-                        <th>العنوان</th>
+                        <th>الاسم</th>
                         <th>العمليات</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach($projects as $project)
+                    @foreach($categories as $category)
                     <tr>
-                        <td>{{$project->id}}</td>
-                        <td>{{$project->ar_name}}</td>
+                        <td>{{$category->id}}</td>
+                        <td>{{$category->ar_name}}</td>
                         <td>
-                            <form action="{{route('projects.destroy', $project->id)}}" method="POST">
+                            <form action="{{route('categories.destroy', $category->id)}}" method="POST">
                                 @csrf {{ method_field('DELETE') }}
-                                <a href="{{route('projects.edit', $project->id)}}"
+                                <a href="{{route('categories.edit', $category->id)}}"
                                     class="btn dark btn-sm btn-outline sbold uppercase">
                                     <i class="fa fa-edit"> تعديل </i>
                                 </a>
@@ -84,31 +84,21 @@
 <!-- END DATATABLE -->
 
 <!-- BEGIN ADD_project MODEL -->
-<div class="modal fade in" id="add_project">
+<div class="modal fade in" id="add_category">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">أضافة مشروع</h4>
+                <h4 class="modal-title">أضافة تصنيف</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>الأسم</label>
                         <input type="text" name="ar_name" class="form-control" placeholder="الأسم" required>
 
-                        <label>الوصف</label>
-                        <textarea name="ar_description" class="form-control ck_editor"></textarea>
-
                         <label>Name</label>
-                        <input type="text" name="en_name" class="form-control" placeholder="Name" required>
-
-                        <label>Description</label>
-                        <textarea name="en_description" class="form-control ck_editor" ></textarea>
-
-
-                        <label>صورة</label>
-                        <input id="photo" type="file" name="photo" multiple>
+                        <input type="text" name="name" class="form-control" placeholder="Name" required>
 
                     </div>
                     <div class="margin-top-10">

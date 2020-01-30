@@ -13,4 +13,9 @@ class Item extends Model
     {
         return $this->morphOne(Image::class , 'imageable');
     }
+
+    public function sub_category()
+    {
+        return $this->belongsTo(SubCategory::class);
+    }
 }

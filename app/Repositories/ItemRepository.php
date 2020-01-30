@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Item;
+use App\SubCategory;
 use App\Traits\Message;
 use App\Traits\ImageProcessing;
 
@@ -13,9 +14,14 @@ class ItemRepository {
 
 
    public function getItems()
-   {
+   { 
        return Item::paginate(20);
    }
+
+   public function subcategories()
+    {
+        return SubCategory::all();
+    }
 
    public function addItem($request)
    {
@@ -26,7 +32,8 @@ class ItemRepository {
         'phone1' => $request->phone1,
         'phone2' => $request->phone2,
         'description' => $request->description,
-        'ar_description' => $request->ar_description
+        'ar_description' => $request->ar_description,
+        'sub_category_id' => $request->sub_category_id
     ]);
     if($request->hasFile('photo')){
       $item->image()->create(['url' => $this->addImage($request->photo)]);
@@ -42,7 +49,7 @@ class ItemRepository {
 
    public function update($request , $id)
    {
-      $item =  Item::findOrFail($id);
+        $item =  $this->getItemByID($id);
         $item->item_name = $request->item_name;
         $item->ar_item_name = $request->ar_item_name;
         $item->price = $request->price;
@@ -50,12 +57,13 @@ class ItemRepository {
         $item->phone2 = $request->phone2;
         $item->description = $request->description;
         $item->ar_description = $request->ar_description;
+        $item->sub_category_id = $request->sub_category_id;
 
         if($item->save()) {
             if($request->hasFile('photo')){
                $this->deleteImage($request->photo);
                 $item->image()->update(['url' => $this->addImage($request->photo)]);
-            $this->successMessage('تم  التعديل بنجاح');
+            $this->successMessage('تم التعديل بنجاح');
         } else {
             $this->errorMessage('حدثه خطاء اثناء التعديل');
         }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\dashboard;
 
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
+use App\Http\Controllers\Controller;
 use App\Repositories\ItemRepository;
 
 class ItemController extends Controller
@@ -21,7 +22,8 @@ class ItemController extends Controller
 
     public function index()
     {
-        return view('dashboard.products.index',['items' => $this->itemRepository->getItems()]);      
+        return view('dashboard.products.index',['items' => $this->itemRepository->getItems() , 
+                                       'subcategories' => $this->itemRepository->subcategories()]);      
     }
 
     public function store(ItemRequest $request)
@@ -32,7 +34,8 @@ class ItemController extends Controller
 
     public function edit($id)
     {
-        return view('dashboard.products.edit' , ['item' => $this->itemRepository->getItemById($id)]);
+        return view('dashboard.products.edit' , ['item' => $this->itemRepository->getItemById($id)
+                                     ,'subcategories' => $this->itemRepository->subcategories()]);
     }
 
     public function update(ItemRequest $request , $id)

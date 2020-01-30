@@ -20,6 +20,7 @@ class CreateItemsTable extends Migration
             $table->string('price');
             $table->string('phone1');
             $table->string('phone2')->nullable();
+            $table->integer('available')->default(1);
             $table->text('description');
             $table->text('ar_description');
             $table->timestamps();

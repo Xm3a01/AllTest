@@ -1,6 +1,6 @@
 <div class="page-sidebar-wrapper">
     <!-- BEGIN SIDEBAR -->
-    <div class="page-sidebar navbar-collapse collapse">
+    <div class="page-sidebar navbar-collapse collapse ">
         <!-- BEGIN SIDEBAR MENU -->
         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true"
             data-slide-speed="200" style="padding-top: 20px">
@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('admin.index')}}" class="nav-link nav-toggle">
+                <a href="{{route('users.index')}}" class="nav-link nav-toggle">
                     <i class="icon-user"></i>
                     <span class="title">الأدمن</span>
                 </a>
@@ -30,38 +30,38 @@
 
             <li class="nav-item">
                 <a href=" {{route('products.index')}} " class="nav-link nav-toggle">
-                    <i class="icon-briefcase"></i>
-                    <span class="title">المنتجات</span>
-                </a>
-            </li>
-
-            {{-- <li class="nav-item">
-                <a href="#" class="nav-link nav-toggle">
-                    <i class="icon-docs"></i>
-                    <span class="title">الأخبار</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link nav-toggle">
                     <i class="icon-basket"></i>
                     <span class="title">المنتجات</span>
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a href="#" class="nav-link nav-toggle">
-                    <i class="icon-bulb"></i>
-                    <span class="title">مشاريع</span>
+             <li class="nav-item">
+                <a href="{{route('categories.index')}}" class="nav-link nav-toggle">
+                    <i class="icon-docs"></i>
+                    <span class="title">التصنيفات</span>
                 </a>
             </li>
 
             <li class="nav-item">
+                <a href="{{route('subcategories.index')}}" class="nav-link nav-toggle">
+                    <i class="icon-docs"></i>
+                    <span class="title">التصنيفات الفرعي</span>
+                </a>
+            </li>
+
+            {{-- <li class="nav-item">
+                <a href="#" class="nav-link nav-toggle">
+                    <i class="icon-bulb"></i>
+                    <span class="title">مشاريع</span>
+                </a>
+            </li> --}}
+
+            {{-- <li class="nav-item">
                 <a href="#" class="nav-link nav-toggle">
                     <i class="icon-users"></i>
                     <span class="title">الفريق</span>
                 </a>
-            </li> --}}
+            </li> --}} 
 
         </ul>
         <!-- END SIDEBAR MENU -->

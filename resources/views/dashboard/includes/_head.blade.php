@@ -25,5 +25,7 @@
 
 <!-- BEGIN PAGE LEVEL STYLES -->
 <link href="{{asset('vendor/css/login-rtl.min.css')}}" rel="stylesheet" type="text/css" />
+
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <!-- END PAGE LEVEL STYLES -->
 

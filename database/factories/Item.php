@@ -13,6 +13,7 @@ $factory->define(Item::class, function (Faker $faker) {
         'phone1' => '09'.$faker->randomNumber(8, false),
         'phone2' => '09'.$faker->randomNumber(8, false),
         'description' => $faker->paragraph,
+        'available' => random_int(0,1),
         'ar_description' => $faker->paragraph
     ];
 });

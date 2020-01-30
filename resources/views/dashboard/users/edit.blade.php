@@ -4,11 +4,11 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="{{route('admin')}}">الصفحة الرئيسية</a>
+            <a href="{{route('dashboard.index')}}">الصفحة الرئيسية</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{route('admins.index')}}">الأدمن</a>
+            <a href="{{route('users.index')}}">الأدمن</a>
             <i class="fa fa-circle"></i>
         </li>
     </ul>
@@ -17,7 +17,7 @@
 
 <h3 class="page-title">تعديل الأدمن </h3>
 
-<form action="{{ route('admins.update', $user->id) }}" method="POST">
+<form action="{{ route('users.update', $user->id) }}" method="POST">
     @csrf {{ method_field('PUT') }}
     <div class="form-group">
         <label>العنوان</label>

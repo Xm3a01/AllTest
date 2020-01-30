@@ -1,5 +1,5 @@
 @extends('dashboard.metronic')
-@section('title', ' جدول المستخدمين')
+@section('title', ' جدول التصنيفات الفرعيه')
 <!-- BEGIN CSS -->
 @section('stylesheets')
 <link rel="stylesheet" href="{{ asset('vendor/plugins/datatables/datatables.min.css') }}">
@@ -11,25 +11,25 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="{{route('admin')}}">الصفحة الرئيسية</a>
+            <a href="{{route('dashboard.index')}}">الصفحة الرئيسية</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{route('companies.index')}}">الشركات</a>
+            <a href="{{route('subcategories.index')}}">التصنيفات الفرعيه</a>
             <i class="fa fa-circle"></i>
         </li>
     </ul>
 </div>
 <!-- END PAGE-BAR -->
 
-<h3 class="page-title"> الشركات </h3>
+<h3 class="page-title"> التصنيف الفرعي </h3>
 
 <!-- BEGIN DATATABLE -->
 <div class="portlet light bordered">
     <div class="portlet-title">
         <div class="caption">
             <i class="icon-social-dribbble font-green"></i>
-            <span class="caption-subject font-green bold uppercase">جدول الشركات</span>
+            <span class="caption-subject font-green bold uppercase">جدول التصنيفات الفرعيه</span>
         </div>
     </div>
     <div class="portlet-body">
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group">
-                        <button data-toggle="modal" class="btn sbold green" href="#add_company"> أضافة شركة
+                        <button data-toggle="modal" class="btn sbold green" href="#add_subcategroy"> أضافة تصنيف فرعي
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
@@ -52,20 +52,22 @@
                         <th> # </th>
                         <th>الأسم</th>
                         <th>Name</th>
+                        <th>التصنيف</th>
                         <th>العمليات</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach($companies as $company)
+                    @foreach($subcategories as $subcategory)
                     <tr>
-                        <td>{{$company->id}}</td>
-                        <td>{{$company->ar_name}}</td>
-                        <td>{{$company->en_name}}</td>
+                        <td>{{$subcategory->id}}</td>
+                        <td>{{$subcategory->ar_name}}</td>
+                        <td>{{$subcategory->name}}</td>
+                        <td>{{$subcategory->category->ar_name ?? ''}}</td>
                         <td>
-                            <form action="{{route('companies.destroy', $company->id)}}" method="POST">
+                            <form action="{{route('subcategories.destroy', $subcategory->id)}}" method="POST">
                                 @csrf {{ method_field('DELETE') }}
-                                <a href="{{route('companies.edit', $company->id)}}"
+                                <a href="{{route('subcategories.edit', $subcategory->id)}}"
                                     class="btn dark btn-sm btn-outline sbold uppercase">
                                     <i class="fa fa-edit"> تعديل </i>
                                 </a>
@@ -86,42 +88,29 @@
 <!-- END DATATABLE -->
 
 <!-- BEGIN ADD_company MODEL -->
-<div class="modal fade in" id="add_company">
+<div class="modal fade in" id="add_subcategroy">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">أضافة مستخدم</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('companies.store') }}" method="POST">
+                <form action="{{ route('subcategories.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label>الأسم</label>
                         <input type="text" name="ar_name" class="form-control" placeholder="الأسم" required>
-
-
-                        <label>الملف الشخصي</label>
-                        <textarea name="ar_profile" class="form-control ck_editor" >{{old('ar_profile')}}</textarea>
                         
                         <label>Name</label>
-                        <input type="text" name="en_name" class="form-control" placeholder="Name" required>
+                        <input type="text" name="name" class="form-control" placeholder="Name" required>
 
-                        <label>Profile</label>
-                        <textarea name="en_profile" class="form-control ck_editor" >{{old('en_profile')}}</textarea>
-                        
-                        <div class="col-md-3"> 
-                            <label>Happy & Customers</label>
-                            <input name = "happy_co" type = 'number' class ="form-control" placeholder = "" ></div>
-                        <div class="col-md-3">
-                             <label>Project Successful</label>
-                             <input name = "project_succ" type = 'number' class ="form-control" placeholder = "" ></div>
-                        <div class="col-md-3">
-                             <label>Years of Experienced</label>
-                             <input name = "years" type = 'number' class ="form-control" placeholder = "" ></div>
-                        <div class="col-md-3">
-                            <label>Professional Expert</label>
-                             <input name ="professional" type = 'number' class ="form-control" placeholder = "" ></div>
-
+                        <label for="">اختار التصنيف</label>
+                        <select class="form-control" name="category_id" id="category_id">
+                            <option value="" hidden selected>التصنيف</option>
+                            @foreach ($categories as $category)     
+                              <option value="{{$category->id}}">{{$category->ar_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="margin-top-10">
                         <button type="submit" class="btn btn-outline sbold green">أضافة</button>
@@ -136,7 +125,7 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!-- BEGIN ADD_company MODEL -->
+<!-- BEGIN ADD_sub category MODEL -->
 
 @endsection
 
