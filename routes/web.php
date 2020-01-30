@@ -1,7 +1,6 @@
 <?php
 
-//Localization Lang changing
-Route::get('locale/{locale}', 'LocaleController@index');
+
 
 Auth::routes();
 
@@ -15,14 +14,16 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function(){
 
 });
 
+
 Route::get('/','Website\IndexController@index')->name('index');
-Route::get('/contact','Website\IndexController@conatct')->name('contact');
+Route::get('/contact','Website\IndexController@contact')->name('contact');
 Route::get('/about','Website\IndexController@about')->name('about');
 Route::get('/products/{category}','Website\IndexController@product')->name('products');
 
 
 
-
+//Localization Lang changing
+Route::get('/locale/{locale}', 'LocaleController@index')->name('lang');
 
 
 

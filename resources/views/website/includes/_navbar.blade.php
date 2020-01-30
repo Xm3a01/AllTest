@@ -1,5 +1,4 @@
-
-   <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
           <span class="icon-close2 js-menu-toggle"></span>
@@ -41,7 +40,7 @@
             <nav class="site-navigation position-relative text-left" role="navigation">
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li ><a href="#home-section" class="nav-link" style="color:white">{{ __('Home') }}</a></li>
+                <li ><a href="/" class="nav-link" style="color:white">{{ __('Home') }}</a></li>
                 {{-- <li><a href="#blog-section" class="nav-link" style="color:white">{{ __('Blog') }}</a></li> --}}
                   <li class="nav-item dropdown" >
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
@@ -54,15 +53,15 @@
               </div>
             </li>
 
-                <li><a href="#about-section" class="nav-link" style="color:white">{{ __('About') }} </a></li>
-                <li><a href="#contact-section" class="nav-link" style="color:white">{{ __('Contact Us ') }}</a></li>
+                <li><a href="{{route('about')}}" class="nav-link" style="color:white">{{ __('About') }} </a></li>
+                <li><a href="{{route('contact')}}" class="nav-link" style="color:white">{{ __('Contact Us ') }}</a></li>
                 <li class="nav-item dropdown" >
                 <a class="nav-link dropdown-toggle" href="ourproduct.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
                    {{ __('Language') }} 
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                   <a class="dropdown-item" href="locale/ar"> Arabic </a>
-                  <a class="dropdown-item" href="locale/en"> English </a>
+                   <a class="dropdown-item" href="{{route('lang' ,'ar')}}"> Arabic </a>
+                  <a class="dropdown-item" href="{{route('lang' ,'en')}}"> English </a>
               </div>
             </li>
               </ul>

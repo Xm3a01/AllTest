@@ -26,16 +26,17 @@ class IndexController extends Controller
 
     public function contact()
     {
-        return view('website.contact');
+        return view('website.contact',['categories' => $this->indexReo->categories()]);
     }
 
     public function about()
     {
-        return view('website.about');
+        return view('website.about',['categories' => $this->indexReo->categories()]);
     }
 
     public function product($category)
     {
-        return view('website.categories',['sub_categories' => $this->indexReo->sub_categories($category)]);
+        return view('website.categories',['sub_categories' => $this->indexReo->sub_categories($category) , 
+         'categories' => $this->indexReo->categories()]);
     }
 }

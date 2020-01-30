@@ -19,7 +19,7 @@ class IndexRepository
     {
         return  Category::all();
     }
-    
+
     public function sub_categories($id)
     {
         $category = Category::findOrFail($id);
@@ -27,4 +27,5 @@ class IndexRepository
 
         return $category->sub_categories;
     }
+    
 }
