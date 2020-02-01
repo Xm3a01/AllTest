@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Item;
 use App\Category;
+use App\SubCategory;
 
 class IndexRepository  
 {
@@ -12,6 +13,13 @@ class IndexRepository
     {
         $items = Item::latest()->take(6)->get();
         $items->load('image');
+        return $items;
+    }
+
+    public function allItems($id)
+    {
+       $category = SubCategory::findOrFail($id);
+        $items = $category->items;
         return $items;
     }
 
@@ -26,6 +34,11 @@ class IndexRepository
         $category->load('sub_categories');
 
         return $category->sub_categories;
+    }
+
+    public function getItemsById($id)
+    {
+        return Item::findOrFail($id);
     }
     
 }

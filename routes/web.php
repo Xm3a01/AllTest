@@ -15,6 +15,8 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function(){
 });
 
 
+Route::get('/categories/{id}/show','Website\ItemController@index')->name('categories.show');
+Route::get('/items/{id}/show','Website\ItemController@show')->name('items.show');
 Route::get('/','Website\IndexController@index')->name('index');
 Route::get('/contact','Website\IndexController@contact')->name('contact');
 Route::get('/about','Website\IndexController@about')->name('about');
