@@ -26,6 +26,7 @@ class SubCategoryRequest extends FormRequest
         return [
             'ar_name' => 'required',
             'name' => 'required',
+            'photo' => 'sometimes',
             'category_id' => 'required'
         ];
     }

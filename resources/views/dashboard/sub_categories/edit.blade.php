@@ -17,7 +17,7 @@
 
 <h3 class="page-title">تعديل المنطقه </h3>
 
-<form action="{{ route('subcategories.update', $subcategory->id) }}" method="POST">
+<form action="{{ route('subcategories.update', $subcategory->id) }}" method="POST" enctype ="multipart/form-data">
     @csrf {{ method_field('PUT') }}
     <div class="form-group">
         <label>الأسم</label>
@@ -40,7 +40,9 @@
         @endforeach
     </select>
     </div>
-
+    <label for="">الصوره</label>
+    <input type="file" class="form-control" name="photo">
+    
     <div class="margin-top-10">
         <button type="submit" class="btn green"> حفظ التعديل </button>
     </div>

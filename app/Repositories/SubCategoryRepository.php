@@ -5,10 +5,11 @@ namespace App\Repositories;
 use App\Category;
 use App\SubCategory;
 use App\Traits\Message;
+use App\Traits\ImageProcessing;
 
 class SubCategoryRepository
 {
-    use Message;
+    use Message,ImageProcessing;
 
 
     public function all()
@@ -28,11 +29,15 @@ class SubCategoryRepository
 
     public function add($request)
     {
-        SubCategory::create([
+        $sub = SubCategory::create([
             'ar_name'     => $request->ar_name,
             'name'        => $request->name,
             'category_id' => $request->category_id
         ]);
+
+        if($request->hasFile('photo')){
+        $sub->image()->create(['url' => $this->addImage($request->photo)]);
+        }
 
         $this->successMessage('تم الحفظ بنجاح');
         return redirect()->route('subcategories.index');
@@ -46,8 +51,7 @@ class SubCategoryRepository
         if($request->has('name')){$subcategory->name = $request->name;}
         if($request->has('ar_name')){$subcategory->ar_name = $request->ar_name;}
         if($request->has('category_id')){$subcategory->category_id = $request->category_id;}
-
-
+        if($request->hasFile('photo')){ $subcategory->image()->update(['url' => $this->addImage($request->photo)]);}
         if($subcategory->save()) {
             $this->successMessage('تم التعديل بنجاح');
             return redirect()->route('subcategories.index');

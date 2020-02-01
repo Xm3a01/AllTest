@@ -16,7 +16,7 @@
         <div class="col-lg-2 col-md-6 mb-5">
           <div class="product-item">
             <figure>
-              <img src="{{asset('website/images/Dahoa ip.jpg')}}" alt="Image" class="img-fluid">
+              <img src="{{Storage::url($sub_category->image->url ?? '')}}" alt="Image" class="img-fluid">
             </figure>
             <div class="px-4">
               <h3><a href="#">{{app()->getLocale() == 'ar' ? $sub_category->ar_name : $sub_category->name }}</a></h3>

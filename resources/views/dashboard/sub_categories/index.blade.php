@@ -95,7 +95,7 @@
                 <h4 class="modal-title">أضافة مستخدم</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('subcategories.store') }}" method="POST">
+                <form action="{{ route('subcategories.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>الأسم</label>
@@ -111,6 +111,8 @@
                               <option value="{{$category->id}}">{{$category->ar_name}}</option>
                             @endforeach
                         </select>
+                        <label for="">الصوره</label>
+                        <input type="file" class="form-control" name="photo">
                     </div>
                     <div class="margin-top-10">
                         <button type="submit" class="btn btn-outline sbold green">أضافة</button>
