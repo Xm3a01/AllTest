@@ -1,3 +1,4 @@
+  {{-- <script src="{{asset('js/app.js')}}"></script> --}}
   <script src="{{asset('website/js/jquery-3.3.1.min.js')}}"></script>
   <script src="{{asset('website/js/jquery-migrate-3.0.1.min.js')}}"></script>
   <script src="{{asset('website/js/popper.min.js')}}"></script>

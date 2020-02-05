@@ -23,6 +23,8 @@ class CreateItemsTable extends Migration
             $table->integer('available')->default(1);
             $table->text('description');
             $table->text('ar_description');
+            $table->longText ('detil_description');
+            $table->longText('ar_detil_description');
             $table->timestamps();
         });
     }

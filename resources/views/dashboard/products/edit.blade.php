@@ -56,13 +56,20 @@
     </select>
 
     <div class="form-group">
-        <label>الوصف عربي</label>
-        <textarea name="ar_description" class="form-control ck_editor">{{$item->ar_description}}</textarea>
+        <label for="ar_description">  الوصف المختصر باللغه العربيه </label>
+        <textarea name="ar_description" class="form-control">{{$item->ar__description}}</textarea>
     </div>
-
     <div class="form-group">
-        <label>Description Eng</label>
-        <textarea name="description" class="form-control ck_editor">{{$item->description}}</textarea>
+        <label for="description">Breif description Eng</label>
+        <textarea name="description" class="form-control">{{$item->description}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="ar_description">  الوصف  باللغه العربيه </label>
+        <textarea name="ar_detil_description" class="form-control ck_editor">{{$item->ar_detil_description}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="description">Description Eng</label>
+        <textarea name="detil_description" class="form-control ck_editor">{{$item->detil_description}}</textarea>
     </div>
 
     <div class="form-group">

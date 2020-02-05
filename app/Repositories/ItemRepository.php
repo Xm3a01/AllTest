@@ -33,6 +33,8 @@ class ItemRepository {
         'phone2' => $request->phone2,
         'description' => $request->description,
         'ar_description' => $request->ar_description,
+        'detil_description' => $request->detil_description,
+        'ar_detil_description' => $request->ar_detil_description,
         'sub_category_id' => $request->sub_category_id
     ]);
     if($request->hasFile('photo')){

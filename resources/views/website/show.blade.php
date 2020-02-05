@@ -21,7 +21,7 @@
             <span class="number">{{$product->id}}</span>
             <h3 class="text-black mb-4 font-weight-bold">{{app()->getLocale() == 'ar' ? $product->ar_item_name : $product->item_name }}</h3>
             <div class="mb-4">
-                {!! app()->getLocale() == 'ar' ? $product->ar_description : $product->description !!}
+                {!! app()->getLocale() == 'ar' ? $product->ar_detil_description : $product->detil_description !!}
             </div>
             
             <div class="mb-4"> 

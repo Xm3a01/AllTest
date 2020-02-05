@@ -44,9 +44,9 @@
             </figure>
             <div class="px-4">
               <h3><a href="#">{{app()->getLocale() == 'ar' ? $item->ar_item_name : $item->item_name }}</a></h3>
-              <div class="mb-3">
-                <span class="meta-icons mr-3"><a href="#" class="mr-2"><span class="icon-star text-warning"></span></a> {{$item->price}}</span>
-                <span class="meta-icons wishlist"><a href="#" class="mr-2"><span class="icon-heart"></span></a> {{$item->price}}</span>
+              <div class="mb-3" id="app">
+                <span class="meta-icons mr-3"><a href="#" class="mr-2"><span class="icon-star text-warning"></span></a> 5.0</span>
+                <span class="meta-icons wishlist"><a href="#" class="mr-2"><span class="icon-heart"></span></a> 29</span>
               </div>
 
               <p class="mb-4">{!! app()->getLocale() == 'ar' ? $item->ar_description : $item->description !!}</p>

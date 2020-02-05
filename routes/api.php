@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('loves','Api\LoveController')->only(['index','update']);
+Route::resource('stars','Api\ReactController')->only(['index','update']);;

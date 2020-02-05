@@ -133,11 +133,17 @@
                             @endforeach
                         </select>
                         
-                        <label for="ar_description"> الوصف باللغه العربيه</label>
-                        <textarea name="ar_description" class="form-control ck_editor"></textarea>
+                        <label for="ar_description">  الوصف المختصر باللغه العربيه </label>
+                        <textarea name="ar_description" class="form-control"></textarea>
 
-                        <label for="description">Description Eng</label>
-                        <textarea name="description" class="form-control ck_editor"></textarea>
+                        <label for="description">Breif description Eng</label>
+                        <textarea name="description" class="form-control"></textarea>
+
+                        <label for="ar_description">  الوصف  باللغه العربيه </label>
+                        <textarea name="ar_detil_description" class="form-control ck_editor"></textarea>
+
+                        <label for="description"> description Eng</label>
+                        <textarea name="detil_description" class="form-control ck_editor"></textarea>
 
                         <label>صورة</label>
                         <input id="photo" type="file" name="photo" multiple>

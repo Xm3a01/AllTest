@@ -28,6 +28,9 @@ class ItemRequest extends FormRequest
             'price' => 'required',
             'phone1'=> 'required',
             'description' => 'required',
+            'ar_description' => 'required',
+            'ar_detil_description' => 'required',
+            'detil_description' => 'required',
             'sub_category_id' => 'required',
             'photo' => 'sometimes' 
         ];
